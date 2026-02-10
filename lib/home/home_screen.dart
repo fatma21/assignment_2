@@ -3,6 +3,81 @@ import 'package:assignment_2/home/reels.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  List<dynamic>storieslist=[
+    Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Image.asset(
+            'assets/images/avatar.jpg', // Replace with your image URL or asset
+            width: 140.0,
+            height: 190.0,
+            fit: BoxFit
+                .fill, // Ensures the image fills the defined bounds
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 35,
+            vertical: 8,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            color: Colors.white,
+          ),
+          child: Text(
+            "Create a \nStory",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(55.0),
+          child: SizedBox(
+            width: 30,
+            height: 30,
+            child: FloatingActionButton(
+              onPressed: () {},
+              shape: CircleBorder(),
+              backgroundColor: Color(0xFF1877F2),
+              mini: true,
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 20,
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+    Reels(
+      "assets/images/image1.jpg",
+      "assets/images/image4.jpg",
+    ),
+    Reels(
+      "assets/images/model1.jpg",
+      "assets/images/model3.jpg",
+    ),
+    Reels(
+      "assets/images/model4.jpg",
+      "assets/images/model4.jpg",
+    ),];
+  List<Widget>postslist=[
+    Divider(thickness: 2.5, color: Colors.grey),
+    Poast("assets/images/model4.jpg", "assets/images/model4.jpg"),
+    Divider(thickness: 2.5, color: Colors.grey),
+    Poast("assets/images/model3.jpg", "assets/images/model1.jpg"),
+    Divider(thickness: 2.5, color: Colors.grey),
+    Poast("assets/images/image1.jpg", "assets/images/image4.jpg"),
+  ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -51,126 +126,62 @@ class HomeScreen extends StatelessWidget {
           children: [
             SingleChildScrollView(
               child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Row(
-                            spacing: 10,
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  backgroundImage: AssetImage(
-                                    "assets/images/avatar.jpg",
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "What's in Your Mind?",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Icon(Icons.image, color: Color(0xFF0DE571)),
-                      ],
-                    ),
-                  ),
-                  Divider(thickness: 2.5, color: Colors.grey),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(20),
                       child: Row(
-                        spacing: 10,
                         children: [
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0),
-                                child: Image.asset(
-                                  'assets/images/avatar.jpg', // Replace with your image URL or asset
-                                  width: 140.0,
-                                  height: 190.0,
-                                  fit: BoxFit
-                                      .fill, // Ensures the image fills the defined bounds
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 35,
-                                  vertical: 8,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(20),
-                                    bottomRight: Radius.circular(20),
-                                  ),
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  "Create a \nStory",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(55.0),
-                                child: SizedBox(
-                                  width: 30,
-                                  height: 30,
-                                  child: FloatingActionButton(
-                                    onPressed: () {},
-                                    shape: CircleBorder(),
-                                    backgroundColor: Color(0xFF1877F2),
-                                    mini: true,
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 20,
+                          Expanded(
+                            child: Row(
+                              spacing: 10,
+                              children: [
+                                SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: CircleAvatar(
+                                    radius: 12,
+                                    backgroundImage: AssetImage(
+                                      "assets/images/avatar.jpg",
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  "What's in Your Mind?",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          Reels(
-                            "assets/images/image1.jpg",
-                            "assets/images/image4.jpg",
-                          ),
-                          Reels(
-                            "assets/images/model1.jpg",
-                            "assets/images/model3.jpg",
-                          ),
-                          Reels(
-                            "assets/images/model4.jpg",
-                            "assets/images/model4.jpg",
-                          ),
+                          Icon(Icons.image, color: Color(0xFF0DE571)),
                         ],
                       ),
                     ),
-                  ),
-                  Divider(thickness: 2.5, color: Colors.grey),
-                  Poast("assets/images/model4.jpg", "assets/images/model4.jpg"),
-                  Divider(thickness: 2.5, color: Colors.grey),
-                  Poast("assets/images/model3.jpg", "assets/images/model1.jpg"),
-                  Divider(thickness: 2.5, color: Colors.grey),
-                  Poast("assets/images/image1.jpg", "assets/images/image4.jpg"),
-                ],
-              ),
+                    Divider(thickness: 2.5, color: Colors.grey),
+                    SizedBox(
+                      height: 190,
+                      child: ListView.separated(
+                          separatorBuilder: (BuildContext context, int index) => SizedBox(width: 8,),
+                        scrollDirection: Axis.horizontal,
+                          itemCount: storieslist.length,
+                              itemBuilder: (context, index) {
+                                // The ListTile is a preconfigured widget perfect for list items
+                                return storieslist[index];}
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: postslist.length,
+                        itemBuilder: (context,int i){
+                      return postslist[i];
+                    }),
+              
+                  ],
+                ),
             ),
             Center(child: Icon(Icons.directions_transit, size: 150)),
             Center(child: Icon(Icons.directions_car, size: 150)),
@@ -198,3 +209,12 @@ class HomeScreen extends StatelessWidget {
 //           children:[Icon(Icons.home_filled)
 //           ]),
 //     );
+
+
+
+//Divider(thickness: 2.5, color: Colors.grey),
+//                   Poast("assets/images/model4.jpg", "assets/images/model4.jpg"),
+//                   Divider(thickness: 2.5, color: Colors.grey),
+//                   Poast("assets/images/model3.jpg", "assets/images/model1.jpg"),
+//                   Divider(thickness: 2.5, color: Colors.grey),
+//                   Poast("assets/images/image1.jpg", "assets/images/image4.jpg"),
