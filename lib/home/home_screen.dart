@@ -83,112 +83,131 @@ class HomeScreen extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Image.asset(
-            "assets/images/Facebook-Logo-2019.png",
-            width: 150,
-          ),
-          actions: [
-            Icon(Icons.add_circle, color: Colors.black),
-            SizedBox(width: 10),
-            Image.asset(
-              "assets/images/search-interface-symbol.png",
-              width: 25,
-              height: 25,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Image.asset(
+              "assets/images/Facebook-Logo-2019.png",
+              width: 150,
             ),
-            Image.asset("assets/images/social.png", width: 45, height: 45),
-          ],
-          bottom: TabBar(
-            labelColor: Color(0xFF1877F2),
-            indicatorColor: Color(0xFF1877F2),
-            tabs: [
-              Tab(icon: Icon(Icons.home_filled, size: 35)),
-              Tab(icon: Icon(Icons.queue_play_next, size: 35)),
-              Tab(icon: Icon(Icons.storefront, size: 35)),
-              Tab(icon: Icon(Icons.account_circle_outlined, size: 35)),
-              Tab(
-                icon: SizedBox(
-                  width: 35,
-                  height: 35,
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundImage: AssetImage("assets/images/avatar.jpg"),
+            actions: [
+              Icon(Icons.add_circle, color: Colors.black),
+              SizedBox(width: 10),
+              Image.asset(
+                "assets/images/search-interface-symbol.png",
+                width: 25,
+                height: 25,
+              ),
+              Image.asset("assets/images/social.png", width: 45, height: 45),
+            ],
+            bottom: TabBar(
+              labelColor: Color(0xFF1877F2),
+              indicatorColor: Color(0xFF1877F2),
+              tabs: [
+                Tab(icon: Icon(Icons.home_filled, size: 35)),
+                Tab(icon: Icon(Icons.queue_play_next, size: 35)),
+                Tab(icon: Icon(Icons.storefront, size: 35)),
+                Tab(icon: Icon(Icons.account_circle_outlined, size: 35)),
+                Tab(
+                  icon: SizedBox(
+                    width: 35,
+                    height: 35,
+                    child: CircleAvatar(
+                      radius: 12,
+                      backgroundImage: AssetImage("assets/images/avatar.jpg"),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        // The body of the Scaffold is the TabBarView
-        body: TabBarView(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Row(
-                              spacing: 10,
-                              children: [
-                                SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: CircleAvatar(
-                                    radius: 12,
-                                    backgroundImage: AssetImage(
-                                      "assets/images/avatar.jpg",
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  "What's in Your Mind?",
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Icon(Icons.image, color: Color(0xFF0DE571)),
-                        ],
-                      ),
-                    ),
-                    Divider(thickness: 2.5, color: Colors.grey),
-                    SizedBox(
-                      height: 190,
-                      child: ListView.separated(
-                          separatorBuilder: (BuildContext context, int index) => SizedBox(width: 8,),
-                        scrollDirection: Axis.horizontal,
-                          itemCount: storieslist.length,
-                              itemBuilder: (context, index) {
-                                // The ListTile is a preconfigured widget perfect for list items
-                                return storieslist[index];}
-                      ),
-                    ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: postslist.length,
-                        itemBuilder: (context,int i){
-                      return postslist[i];
-                    }),
-              
-                  ],
-                ),
+              ],
             ),
-            Center(child: Icon(Icons.directions_transit, size: 150)),
-            Center(child: Icon(Icons.directions_car, size: 150)),
-            Center(child: Icon(Icons.directions_car, size: 150)),
-            Center(child: Icon(Icons.directions_car, size: 150)),
-          ],
-        ),
+          ),
+          // The body of the Scaffold is the TabBarView
+          body: TabBarView(
+            children: [
+              CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    SizedBox(width: 10),
+                                    SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                          "assets/images/avatar.jpg",
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      "What's in Your Mind?",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.image, color: Color(0xFF0DE571)),
+                            ],
+                          ),
+                        ),
+                        Divider(thickness: 2.5, color: Colors.grey),
+                        SizedBox(
+                          height: 190,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            separatorBuilder: (context, index) =>
+                                SizedBox(width: 8),
+                            itemCount: storieslist.length,
+                            itemBuilder: (context, index) {
+                              return storieslist[index];
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // SliverToBoxAdapter(
+                  //   child: SizedBox(
+                  //     height: 190,
+                  //     child: ListView.separated(
+                  //       scrollDirection: Axis.horizontal,
+                  //       separatorBuilder: (context, index) =>
+                  //           SizedBox(width: 8),
+                  //       itemCount: storieslist.length,
+                  //       itemBuilder: (context, index) {
+                  //         return storieslist[index];
+                  //       },
+                  //     ),
+                  //   ),
+                  // ),
+                  SliverList.builder(
+                      itemCount: postslist.length,
+                      itemBuilder: (context, int index){
+                        return postslist[index];
+                      }
+                  ),
+                ],
+              ),
+
+              Center(child: Icon(Icons.directions_transit, size: 150)),
+              Center(child: Icon(Icons.directions_car, size: 150)),
+              Center(child: Icon(Icons.directions_car, size: 150)),
+              Center(child: Icon(Icons.directions_car, size: 150)),
+            ],
+          )
+
       ),
     );
   }
